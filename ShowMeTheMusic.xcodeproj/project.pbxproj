@@ -11,7 +11,39 @@
 		1787242E2783B53100B4BBFC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1787242D2783B53100B4BBFC /* ContentView.swift */; };
 		178724302783B53200B4BBFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1787242F2783B53200B4BBFC /* Assets.xcassets */; };
 		178724332783B53200B4BBFC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 178724322783B53200B4BBFC /* Preview Assets.xcassets */; };
+		178724412783BC5D00B4BBFC /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 178724402783BC5D00B4BBFC /* WidgetKit.framework */; platformFilter = maccatalyst; };
+		178724432783BC5D00B4BBFC /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 178724422783BC5D00B4BBFC /* SwiftUI.framework */; platformFilter = maccatalyst; };
+		178724462783BC5D00B4BBFC /* NowPlaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178724452783BC5D00B4BBFC /* NowPlaying.swift */; };
+		178724492783BC5E00B4BBFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 178724482783BC5E00B4BBFC /* Assets.xcassets */; };
+		1787244C2783BC5E00B4BBFC /* NowPlaying.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 178724472783BC5D00B4BBFC /* NowPlaying.intentdefinition */; };
+		1787244D2783BC5E00B4BBFC /* NowPlaying.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 178724472783BC5D00B4BBFC /* NowPlaying.intentdefinition */; };
+		178724502783BC5E00B4BBFC /* NowPlayingExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1787243E2783BC5D00B4BBFC /* NowPlayingExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		178724562783D99100B4BBFC /* NowPlayingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178724552783D5C400B4BBFC /* NowPlayingHelper.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1787244E2783BC5E00B4BBFC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 178724202783B53100B4BBFC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1787243D2783BC5D00B4BBFC;
+			remoteInfo = NowPlayingExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		178724542783BC5E00B4BBFC /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				178724502783BC5E00B4BBFC /* NowPlayingExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		178724282783B53100B4BBFC /* ShowMeTheMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShowMeTheMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -20,6 +52,15 @@
 		1787242F2783B53200B4BBFC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		178724322783B53200B4BBFC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		178724342783B53200B4BBFC /* ShowMeTheMusic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShowMeTheMusic.entitlements; sourceTree = "<group>"; };
+		1787243E2783BC5D00B4BBFC /* NowPlayingExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NowPlayingExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		178724402783BC5D00B4BBFC /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		178724422783BC5D00B4BBFC /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		178724452783BC5D00B4BBFC /* NowPlaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlaying.swift; sourceTree = "<group>"; };
+		178724472783BC5D00B4BBFC /* NowPlaying.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = NowPlaying.intentdefinition; sourceTree = "<group>"; };
+		178724482783BC5E00B4BBFC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1787244A2783BC5E00B4BBFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1787244B2783BC5E00B4BBFC /* NowPlaying.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NowPlaying.entitlements; sourceTree = "<group>"; };
+		178724552783D5C400B4BBFC /* NowPlayingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +71,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1787243B2783BC5D00B4BBFC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				178724432783BC5D00B4BBFC /* SwiftUI.framework in Frameworks */,
+				178724412783BC5D00B4BBFC /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -37,6 +87,8 @@
 			isa = PBXGroup;
 			children = (
 				1787242A2783B53100B4BBFC /* ShowMeTheMusic */,
+				178724442783BC5D00B4BBFC /* NowPlaying */,
+				1787243F2783BC5D00B4BBFC /* Frameworks */,
 				178724292783B53100B4BBFC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -45,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				178724282783B53100B4BBFC /* ShowMeTheMusic.app */,
+				1787243E2783BC5D00B4BBFC /* NowPlayingExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -69,6 +122,28 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		1787243F2783BC5D00B4BBFC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				178724402783BC5D00B4BBFC /* WidgetKit.framework */,
+				178724422783BC5D00B4BBFC /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		178724442783BC5D00B4BBFC /* NowPlaying */ = {
+			isa = PBXGroup;
+			children = (
+				178724452783BC5D00B4BBFC /* NowPlaying.swift */,
+				178724472783BC5D00B4BBFC /* NowPlaying.intentdefinition */,
+				178724482783BC5E00B4BBFC /* Assets.xcassets */,
+				1787244A2783BC5E00B4BBFC /* Info.plist */,
+				1787244B2783BC5E00B4BBFC /* NowPlaying.entitlements */,
+				178724552783D5C400B4BBFC /* NowPlayingHelper.swift */,
+			);
+			path = NowPlaying;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -79,15 +154,34 @@
 				178724242783B53100B4BBFC /* Sources */,
 				178724252783B53100B4BBFC /* Frameworks */,
 				178724262783B53100B4BBFC /* Resources */,
+				178724542783BC5E00B4BBFC /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1787244F2783BC5E00B4BBFC /* PBXTargetDependency */,
 			);
 			name = ShowMeTheMusic;
 			productName = ShowMeTheMusic;
 			productReference = 178724282783B53100B4BBFC /* ShowMeTheMusic.app */;
 			productType = "com.apple.product-type.application";
+		};
+		1787243D2783BC5D00B4BBFC /* NowPlayingExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 178724512783BC5E00B4BBFC /* Build configuration list for PBXNativeTarget "NowPlayingExtension" */;
+			buildPhases = (
+				1787243A2783BC5D00B4BBFC /* Sources */,
+				1787243B2783BC5D00B4BBFC /* Frameworks */,
+				1787243C2783BC5D00B4BBFC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NowPlayingExtension;
+			productName = NowPlayingExtension;
+			productReference = 1787243E2783BC5D00B4BBFC /* NowPlayingExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -100,6 +194,9 @@
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					178724272783B53100B4BBFC = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					1787243D2783BC5D00B4BBFC = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
 				};
@@ -118,6 +215,7 @@
 			projectRoot = "";
 			targets = (
 				178724272783B53100B4BBFC /* ShowMeTheMusic */,
+				1787243D2783BC5D00B4BBFC /* NowPlayingExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -132,6 +230,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1787243C2783BC5D00B4BBFC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				178724492783BC5E00B4BBFC /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -139,12 +245,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1787244D2783BC5E00B4BBFC /* NowPlaying.intentdefinition in Sources */,
 				1787242E2783B53100B4BBFC /* ContentView.swift in Sources */,
 				1787242C2783B53100B4BBFC /* ShowMeTheMusicApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1787243A2783BC5D00B4BBFC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				178724562783D99100B4BBFC /* NowPlayingHelper.swift in Sources */,
+				1787244C2783BC5E00B4BBFC /* NowPlaying.intentdefinition in Sources */,
+				178724462783BC5D00B4BBFC /* NowPlaying.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1787244F2783BC5E00B4BBFC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1787243D2783BC5D00B4BBFC /* NowPlayingExtension */;
+			targetProxy = 1787244E2783BC5E00B4BBFC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		178724352783B53200B4BBFC /* Debug */ = {
@@ -265,6 +390,7 @@
 		178724382783B53200B4BBFC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ShowMeTheMusic/ShowMeTheMusic.entitlements;
@@ -276,6 +402,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "We will show the current playing song in the widget.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -292,6 +419,7 @@
 		178724392783B53200B4BBFC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ShowMeTheMusic/ShowMeTheMusic.entitlements;
@@ -303,6 +431,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "We will show the current playing song in the widget.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -311,6 +440,66 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = link.anco.ShowMeTheMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		178724522783BC5E00B4BBFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = NowPlaying/NowPlaying.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7M4CBUW6C4;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NowPlaying/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NowPlaying;
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Show the currently playing music in the widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = link.anco.ShowMeTheMusic.NowPlaying;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		178724532783BC5E00B4BBFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = NowPlaying/NowPlaying.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7M4CBUW6C4;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NowPlaying/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NowPlaying;
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Show the currently playing music in the widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = link.anco.ShowMeTheMusic.NowPlaying;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -333,6 +522,15 @@
 			buildConfigurations = (
 				178724382783B53200B4BBFC /* Debug */,
 				178724392783B53200B4BBFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		178724512783BC5E00B4BBFC /* Build configuration list for PBXNativeTarget "NowPlayingExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				178724522783BC5E00B4BBFC /* Debug */,
+				178724532783BC5E00B4BBFC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
