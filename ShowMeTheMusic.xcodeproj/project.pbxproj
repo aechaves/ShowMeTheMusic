@@ -61,6 +61,7 @@
 		1787244A2783BC5E00B4BBFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1787244B2783BC5E00B4BBFC /* NowPlaying.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NowPlaying.entitlements; sourceTree = "<group>"; };
 		178724552783D5C400B4BBFC /* NowPlayingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingHelper.swift; sourceTree = "<group>"; };
+		17A6D174278A6AC900A206E7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +87,7 @@
 		1787241F2783B53100B4BBFC = {
 			isa = PBXGroup;
 			children = (
+				17A6D174278A6AC900A206E7 /* README.md */,
 				1787242A2783B53100B4BBFC /* ShowMeTheMusic */,
 				178724442783BC5D00B4BBFC /* NowPlaying */,
 				1787243F2783BC5D00B4BBFC /* Frameworks */,
