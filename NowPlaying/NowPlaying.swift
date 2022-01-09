@@ -110,10 +110,13 @@ struct NowPlayingEntryView : View {
                     Text(entry.name)
                         .font(.title)
                         .bold()
+                        .minimumScaleFactor(0.7)
                     Text(entry.artist)
                         .font(.title)
+                        .minimumScaleFactor(0.7)
                 }
                 .foregroundColor(Color.white)
+                .padding()
                 Spacer()
             }
             .padding(.horizontal)
