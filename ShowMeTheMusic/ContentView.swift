@@ -9,8 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            Text("Add the widget in the notification center.")
+            Text("You may quit this app.")
+        }
+        .font(.title)
+        .padding()
+        .frame(width: 400, height: 200, alignment: .center)
     }
 }
 
