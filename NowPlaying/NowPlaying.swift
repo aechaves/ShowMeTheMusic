@@ -12,7 +12,7 @@ import Intents
 struct SongProvider: IntentTimelineProvider {
     
     func placeholder(in context: Context) -> SongEntry {
-        SongEntry(date: Date(), configuration: ConfigurationIntent(), name: "Preview Song", isPreview: true)
+        SongEntry(date: Date(), configuration: ConfigurationIntent(), name: "Preview Song", artist: "Preview Artist", isPreview: true)
     }
     
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SongEntry) -> Void) {
@@ -20,7 +20,7 @@ struct SongProvider: IntentTimelineProvider {
             let date = Date()
             let entry: SongEntry
             
-            entry = SongEntry(date: date, configuration: configuration, name: title)
+            entry = SongEntry(date: date, configuration: configuration, name: title, artist: artist)
             completion(entry)
         }
     }
@@ -29,7 +29,7 @@ struct SongProvider: IntentTimelineProvider {
         
         NowPlayingHelper.shared.getSong { artist, title, album in
             let date = Date()
-            let entry = SongEntry(date: date, configuration: configuration, name: title)
+            let entry = SongEntry(date: date, configuration: configuration, name: title, artist: artist)
             
             // Create a date that's 5 minutes in the future.
             let nextUpdateDate = Calendar.current.date(byAdding: .minute, value: 5, to: date)!
@@ -52,21 +52,24 @@ struct SongEntry: TimelineEntry {
     let configuration: ConfigurationIntent
     
     let name: String
+    let artist: String
     let artwork: Image?
     let isPreview: Bool
     
-    init(date:Date, configuration: ConfigurationIntent, name: String) {
+    init(date:Date, configuration: ConfigurationIntent, name: String, artist: String) {
         self.date = date
         self.configuration = configuration
         self.name = name
+        self.artist = artist
         self.isPreview = false
         self.artwork = nil
     }
     
-    init(date:Date, configuration: ConfigurationIntent, name: String, isPreview: Bool) {
+    init(date:Date, configuration: ConfigurationIntent, name: String, artist: String, isPreview: Bool) {
         self.date = date
         self.configuration = configuration
         self.name = name
+        self.artist = artist
         self.isPreview = isPreview
         self.artwork = nil
     }
@@ -85,15 +88,12 @@ struct NowPlayingEntryView : View {
                     .foregroundColor(Color.white)
                     .frame(maxWidth: 114, maxHeight: 114, alignment: .center)
                 Spacer()
-                VStack {
+                VStack(alignment: .leading, spacing: 12) {
                     Text(entry.name)
                         .font(.title)
                         .bold()
-                        .frame(maxWidth: 180, maxHeight: 90, alignment: .leading)
-                    Text("Artist Nameeeeeee")
-                        .truncationMode(.tail)
+                    Text(entry.artist)
                         .font(.title)
-                        .frame(maxWidth: 180, maxHeight: 20, alignment: .leading)
                 }
                 .foregroundColor(Color.white)
                 Spacer()
@@ -119,7 +119,7 @@ struct NowPlaying: Widget {
 
 struct NowPlaying_Previews: PreviewProvider {
     static var previews: some View {
-        NowPlayingEntryView(entry: SongEntry(date: Date(), configuration: ConfigurationIntent(), name: "Currently Playing Songggggggggggggggggggggggg", isPreview: false))
+        NowPlayingEntryView(entry: SongEntry(date: Date(), configuration: ConfigurationIntent(), name: "Currently Playing Song", artist: "Artist Name", isPreview: false))
             .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }
