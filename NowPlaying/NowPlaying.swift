@@ -16,7 +16,7 @@ struct SongProvider: IntentTimelineProvider {
     }
     
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SongEntry) -> Void) {
-        NowPlayingHelper.shared.getSong { artist, title, album in
+        NowPlayingHelper.shared.getSong { artist, title, album, _ in
             let date = Date()
             let entry: SongEntry
             
@@ -27,9 +27,9 @@ struct SongProvider: IntentTimelineProvider {
     
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         
-        NowPlayingHelper.shared.getSong { artist, title, album in
+        NowPlayingHelper.shared.getSong { artist, title, album, artwork in
             let date = Date()
-            let entry = SongEntry(date: date, configuration: configuration, name: title, artist: artist)
+            let entry = SongEntry(date: date, configuration: configuration, name: title, artist: artist, artwork: artwork)
             
             // Create a date that's 5 minutes in the future.
             let nextUpdateDate = Calendar.current.date(byAdding: .minute, value: 5, to: date)!
@@ -53,8 +53,17 @@ struct SongEntry: TimelineEntry {
     
     let name: String
     let artist: String
-    let artwork: Image?
+    let artwork: Data?
     let isPreview: Bool
+    
+    init(date:Date, configuration: ConfigurationIntent, name: String, artist: String, artwork: Data?) {
+        self.date = date
+        self.configuration = configuration
+        self.name = name
+        self.artist = artist
+        self.isPreview = false
+        self.artwork = artwork
+    }
     
     init(date:Date, configuration: ConfigurationIntent, name: String, artist: String) {
         self.date = date
@@ -82,11 +91,20 @@ struct NowPlayingEntryView : View {
         ZStack {
             LinearGradient(colors: [Color.red,Color.pink], startPoint: .top, endPoint: .bottom)
             HStack {
-                Image(systemName: "music.note")
-                    .resizable()
-                    .scaledToFit()
-                    .foregroundColor(Color.white)
-                    .frame(maxWidth: 114, maxHeight: 114, alignment: .center)
+                if let artwork = entry.artwork, let nsImage = NSImage(data: artwork) {
+                    Image(nsImage: nsImage)
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundColor(Color.white)
+                        .frame(maxWidth: 114, maxHeight: 114, alignment: .center)
+                        .clipShape(ContainerRelativeShape())
+                } else {
+                    Image(systemName: "music.note")
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundColor(Color.white)
+                        .frame(maxWidth: 114, maxHeight: 114, alignment: .center)
+                }
                 Spacer()
                 VStack(alignment: .leading, spacing: 12) {
                     Text(entry.name)

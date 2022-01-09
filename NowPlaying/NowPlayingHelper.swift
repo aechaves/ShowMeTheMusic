@@ -53,15 +53,23 @@ class NowPlayingHelper {
                                                object: nil)
     }
     
-    func getSong(callback: @escaping (String, String, String) -> ()) {
+    func getSong(callback: @escaping (String, String, String, Data?) -> ()) {
         MRMediaRemoteGetNowPlayingInfo!(DispatchQueue.main, { (information) in
             //print(information["kMRMediaRemoteNowPlayingInfoDuration"] as! String) // not a string
             //let artwork = NSImage(data: information["kMRMediaRemoteNowPlayingInfoArtworkData"] as! Data)
             
+            let artwork: Data?
+            if let artworkDataKeyIndex = information.index(forKey: "kMRMediaRemoteNowPlayingInfoArtworkData") {
+                artwork = information[artworkDataKeyIndex].value as? Data
+            } else {
+                artwork = nil
+            }
+            
             callback(
                 information["kMRMediaRemoteNowPlayingInfoArtist"] as! String,
                 information["kMRMediaRemoteNowPlayingInfoTitle"] as! String,
-                information["kMRMediaRemoteNowPlayingInfoAlbum"] as! String
+                information["kMRMediaRemoteNowPlayingInfoAlbum"] as! String,
+                artwork
             )
         })
     }
