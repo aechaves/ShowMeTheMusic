@@ -146,7 +146,7 @@ struct NowPlaying: Widget {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: SongProvider()) { entry in
             NowPlayingEntryView(entry: entry)
         }
-        .supportedFamilies([.systemMedium,.systemLarge])
+        .supportedFamilies([.systemMedium])
         .configurationDisplayName("Now Playing")
         .description("Shows what's currently playing.")
     }
