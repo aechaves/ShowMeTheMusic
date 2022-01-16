@@ -10,13 +10,12 @@ import MediaPlayer
 import WidgetKit
 
 typealias MRMediaRemoteGetNowPlayingInfoFunction = @convention(c) (DispatchQueue, @escaping ([String: Any]) -> Void) -> Void
+typealias MRMediaRemoteGetNowPlayingApplicationIsPlayingFunction = @convention(c) (DispatchQueue, @escaping (Bool) -> Void) -> Void
 
-struct Song {
-    let artist: String
-    let title: String
-    let album: String
-    let duration: String
-    let artwork: Data
+enum PlayingState: String {
+    case stopped = "stop.circle"
+    case paused = "pause.circle"
+    case playing = "play.circle"
 }
 
 class NowPlayingHelper {
@@ -24,7 +23,8 @@ class NowPlayingHelper {
     
     var bundle: CFBundle?
     var MRMediaRemoteGetNowPlayingInfo: MRMediaRemoteGetNowPlayingInfoFunction?
-    var currentSong: Song?
+    var MRMediaRemoteGetNowPlayingApplicationIsPlaying: MRMediaRemoteGetNowPlayingApplicationIsPlayingFunction?
+    var playingState: PlayingState = .stopped
     
     init() {
         // Load framework
@@ -33,6 +33,10 @@ class NowPlayingHelper {
         // Get a Swift function for MRMediaRemoteGetNowPlayingInfo
         guard let MRMediaRemoteGetNowPlayingInfoPointer = CFBundleGetFunctionPointerForName(bundle, "MRMediaRemoteGetNowPlayingInfo" as CFString) else { return }
         MRMediaRemoteGetNowPlayingInfo = unsafeBitCast(MRMediaRemoteGetNowPlayingInfoPointer, to: MRMediaRemoteGetNowPlayingInfoFunction.self)
+        
+        // Get a Swift function for MRMediaRemoteGetNowPlayingApplicationIsPlaying
+        guard let MRMediaRemoteGetNowPlayingApplicationIsPlayingPointer = CFBundleGetFunctionPointerForName(bundle, "MRMediaRemoteGetNowPlayingApplicationIsPlaying" as CFString) else { return }
+        MRMediaRemoteGetNowPlayingApplicationIsPlaying = unsafeBitCast(MRMediaRemoteGetNowPlayingApplicationIsPlayingPointer, to: MRMediaRemoteGetNowPlayingApplicationIsPlayingFunction.self)
         
         // Get the private notification name for when playing state and playing information changes
         let playingStateNotificationPointer = CFBundleGetDataPointerForName(bundle, "MRMediaRemoteNowPlayingApplicationIsPlayingDidChangeNotification" as CFString)
@@ -51,31 +55,47 @@ class NowPlayingHelper {
                                                selector: #selector(playingInfoChanged),
                                                name: playingInfoNotification,
                                                object: nil)
+        
+        // Playing state
+        MRMediaRemoteGetNowPlayingApplicationIsPlaying!(DispatchQueue.main, { [weak self] isPlaying in
+            self?.playingState = isPlaying ? .playing : .paused
+        })
     }
     
     func getSong(callback: @escaping (String, String, String, Data?) -> ()) {
-        MRMediaRemoteGetNowPlayingInfo!(DispatchQueue.main, { (information) in
-            //print(information["kMRMediaRemoteNowPlayingInfoDuration"] as! String) // not a string
-            //let artwork = NSImage(data: information["kMRMediaRemoteNowPlayingInfoArtworkData"] as! Data)
+        // Refresh playing state
+        MRMediaRemoteGetNowPlayingApplicationIsPlaying!(DispatchQueue.main, { [weak self] isPlaying in
+            self?.playingState = isPlaying ? .playing : .paused
+        })
+        
+        MRMediaRemoteGetNowPlayingInfo!(DispatchQueue.main, { [weak self] (information) in
             
-            let artwork: Data?
-            if let artworkDataKeyIndex = information.index(forKey: "kMRMediaRemoteNowPlayingInfoArtworkData") {
-                artwork = information[artworkDataKeyIndex].value as? Data
+            if information.isEmpty {
+                self?.playingState = .stopped
+                callback("-", "-", "-", nil)
             } else {
-                artwork = nil
+                let artwork: Data?
+                if let artworkDataKeyIndex = information.index(forKey: "kMRMediaRemoteNowPlayingInfoArtworkData") {
+                    artwork = information[artworkDataKeyIndex].value as? Data
+                } else {
+                    artwork = nil
+                }
+                
+                callback(
+                    information["kMRMediaRemoteNowPlayingInfoArtist"] as! String,
+                    information["kMRMediaRemoteNowPlayingInfoTitle"] as! String,
+                    information["kMRMediaRemoteNowPlayingInfoAlbum"] as! String,
+                    artwork
+                )
             }
-            
-            callback(
-                information["kMRMediaRemoteNowPlayingInfoArtist"] as! String,
-                information["kMRMediaRemoteNowPlayingInfoTitle"] as! String,
-                information["kMRMediaRemoteNowPlayingInfoAlbum"] as! String,
-                artwork
-            )
         })
     }
     
     @objc
     func playingStateChanged(notification: Notification) {
+        // we don't refresh the playingState with kMRMediaRemoteNowPlayingApplicationIsPlayingUserInfoKey here
+        // because sometimes multiple notifications will be sent and the few last ones will not have the key, making us think that the playback has stopped
+        // (At least during debugging)
         WidgetCenter.shared.reloadTimelines(ofKind: "link.anco.ShowMeTheMusic.NowPlaying")
     }
     

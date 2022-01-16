@@ -91,20 +91,34 @@ struct NowPlayingEntryView : View {
         ZStack {
             LinearGradient(colors: [Color.red,Color.pink], startPoint: .top, endPoint: .bottom)
             HStack {
-                if let artwork = entry.artwork, let nsImage = NSImage(data: artwork) {
-                    Image(nsImage: nsImage)
-                        .resizable()
-                        .scaledToFit()
-                        .foregroundColor(Color.white)
-                        .frame(maxWidth: 114, maxHeight: 114, alignment: .center)
-                        .clipShape(ContainerRelativeShape())
-                } else {
-                    Image(systemName: "music.note")
-                        .resizable()
-                        .scaledToFit()
-                        .foregroundColor(Color.white)
-                        .frame(maxWidth: 114, maxHeight: 114, alignment: .center)
+                ZStack {
+                    if let artwork = entry.artwork, let nsImage = NSImage(data: artwork) {
+                        Image(nsImage: nsImage)
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundColor(Color.white)
+                            .opacity(NowPlayingHelper.shared.playingState == .playing ? 1 : 0.4)
+                            .clipShape(ContainerRelativeShape())
+                    } else {
+                        ContainerRelativeShape()
+                            .scaledToFit()
+                            .opacity(0.2)
+                        Image(systemName: "music.note")
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundColor(Color.white)
+                            .padding(16)
+                            .opacity(NowPlayingHelper.shared.playingState == .playing ? 1 : 0.2)
+                    }
+                    if NowPlayingHelper.shared.playingState != .playing {
+                        Image(systemName: NowPlayingHelper.shared.playingState.rawValue)
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundColor(Color.white)
+                            .padding()
+                    }
                 }
+                .frame(maxWidth: 114, maxHeight: 114, alignment: .center)
                 Spacer()
                 VStack(alignment: .leading, spacing: 12) {
                     Text(entry.name)
