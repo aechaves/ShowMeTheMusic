@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    var helper = NowPlayingHelper.shared
+    
     var body: some View {
         VStack {
             Text("Add the widget in the notification center.")

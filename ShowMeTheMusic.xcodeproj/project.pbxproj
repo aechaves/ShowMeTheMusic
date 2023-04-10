@@ -19,6 +19,7 @@
 		1787244D2783BC5E00B4BBFC /* NowPlaying.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 178724472783BC5D00B4BBFC /* NowPlaying.intentdefinition */; };
 		178724502783BC5E00B4BBFC /* NowPlayingExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1787243E2783BC5D00B4BBFC /* NowPlayingExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		178724562783D99100B4BBFC /* NowPlayingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178724552783D5C400B4BBFC /* NowPlayingHelper.swift */; };
+		1798B10F29E49C2800031197 /* NowPlayingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1798B10E29E49C2800031197 /* NowPlayingHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		1787244A2783BC5E00B4BBFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1787244B2783BC5E00B4BBFC /* NowPlaying.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NowPlaying.entitlements; sourceTree = "<group>"; };
 		178724552783D5C400B4BBFC /* NowPlayingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingHelper.swift; sourceTree = "<group>"; };
+		1798B10E29E49C2800031197 /* NowPlayingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingHelper.swift; sourceTree = "<group>"; };
 		17A6D174278A6AC900A206E7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,6 +114,7 @@
 				1787242F2783B53200B4BBFC /* Assets.xcassets */,
 				178724342783B53200B4BBFC /* ShowMeTheMusic.entitlements */,
 				178724312783B53200B4BBFC /* Preview Content */,
+				1798B10E29E49C2800031197 /* NowPlayingHelper.swift */,
 			);
 			path = ShowMeTheMusic;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1787244D2783BC5E00B4BBFC /* NowPlaying.intentdefinition in Sources */,
+				1798B10F29E49C2800031197 /* NowPlayingHelper.swift in Sources */,
 				1787242E2783B53100B4BBFC /* ContentView.swift in Sources */,
 				1787242C2783B53100B4BBFC /* ShowMeTheMusicApp.swift in Sources */,
 			);
