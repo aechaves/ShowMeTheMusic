@@ -10,6 +10,8 @@ The widget should (hopefulyl) update when you play/pause or when changing tracks
 
 ## TODOs
 
+* Allow the app to be a menu bar and hide itself
+    * The idea being to configure it to launch when logging in, hidden, so it listen to music notifications and reloads the widget properly.
 * Only pay attention to information from the system music player? (What about custom players? Maybe there is a way to filter out media from the browsers?)
 * Configurations
     * Display album artwork/Artist/Album name
