@@ -10,6 +10,7 @@ The widget should (hopefulyl) update when you play/pause or when changing tracks
 
 ## TODOs
 
+* Only pay attention to information from the system music player? (What about custom players? Maybe there is a way to filter out media from the browsers?)
 * Configurations
     * Display album artwork/Artist/Album name
 * Large size
